@@ -9,8 +9,14 @@ Student Information:
 - NetID: [Replace with your UIC NetID]
 
 Data Source (if any): 
-- Source 1: [Replace with your data source (if any)]
-- Source 2: [Replace with your data source (if any)]
+- Source 1: UIT-VSFC (Vietnamese Students’ Feedback Corpus), Nguyen et al., KSE 2018.
+  https://huggingface.co/datasets/uitnlp/vietnamese_students_feedback
+  Selection: first 100 positive (2) and 100 negative (0) entries from the
+  source training split, skipping neutral (1). Per class: first 80 train,
+  next 20 test. Original sentence wording preserved.
+  User selected the source; AI assistance downloaded/extracted the entries.
+  DOI: 10.1109/KSE.2018.8573337
+- Source 2: None
 
 Video Presentation Details:
 - Video URL: [Paste your accessible YouTube / Google Drive / Dropbox link here]
@@ -18,8 +24,8 @@ Video Presentation Details:
 - Video File Format: .mp4 (or standard streamable link)
 
 Language Declaration:
-- Language Used in Dataset & Classifier: [e.g., English / Spanish / Burmese / Hindi / Chinese / etc.]
-- Applying for +30% Non-English Language Bonus: [YES / NO]
+- Language Used in Dataset & Classifier: Vietnamese (Tiếng Việt)
+- Applying for +30% Non-English Language Bonus: YES
   (Note: If YES, book your 5-question interview at: https://calendar.app.google/J5EejvwkKgtPE8oKA)
 
 Verification Checklist:
