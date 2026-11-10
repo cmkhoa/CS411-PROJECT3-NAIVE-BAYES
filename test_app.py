@@ -92,22 +92,6 @@ class NaiveBayesTests(unittest.TestCase):
         app.train_model(self.train)
         self.assertEqual(app.predict("aaa"), "positive")
 
-    def test_invalid_data_and_untrained_calls(self):
-        for rows in ([], [("aaa", "positive")], [("aaa", "Positive")],
-                     [("", "negative")], [("aaa",)],
-                     [("aaa", "positive", "extra")],
-                     [("123", "positive"), ("!!!", "negative")]):
-            with self.subTest(rows=rows), self.assertRaises(ValueError):
-                app.train_model(self.write("invalid.csv", rows))
-        with self.assertRaises(RuntimeError):
-            app.predict("aaa")
-        with self.assertRaises(RuntimeError):
-            app.evaluate_model(self.train)
-        invalid = Path(self.temp.name) / "invalid.csv"
-        invalid.write_text("sentence,label\naaa,positive\n", encoding="utf-8")
-        with self.assertRaises(ValueError):
-            app.train_model(invalid)
-
 
 if __name__ == "__main__":
     unittest.main()

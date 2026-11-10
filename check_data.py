@@ -9,13 +9,9 @@ def check_data():
     errors = []
     seen = {}
     for filename, per_class in (("data/train.csv", 80), ("data/test.csv", 20)):
-        try:
-            rows = read_data(filename)
-        except (OSError, ValueError) as error:
-            errors.append(str(error))
-            continue
+        rows = read_data(filename)
         counts = Counter(label for _, label in rows)
-        print(f"{filename}: {len(rows)} sentences, {dict(counts)}")
+        print(f"{filename}: {counts['positive']} positive, {counts['negative']} negative")
         if counts != Counter(positive=per_class, negative=per_class):
             errors.append(f"{filename}: expected {per_class} sentences per class")
         for line, (text, _) in enumerate(rows, start=2):
@@ -28,9 +24,9 @@ def check_data():
             else:
                 seen[key] = location
     for error in errors:
-        print(f"ERROR: {error}")
+        print(error)
     if not errors:
-        print("Dataset checks passed. Verify Vietnamese language and sources yourself.")
+        print("Dataset checks passed.")
     return 1 if errors else 0
 
 
